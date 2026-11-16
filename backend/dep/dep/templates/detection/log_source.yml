@@ -1,0 +1,4 @@
+      - platform: ${platform}
+        table: TODO_Table
+        required_fields:
+          - TimeGenerated

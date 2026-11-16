@@ -1,0 +1,22 @@
+schema_version: "1.0.0"
+data_sources:
+  windows-security-events:
+    category: endpoint
+    attack_ds: DS0028
+    description: Windows Security event log
+  azure-ad-signins:
+    category: identity
+    attack_ds: DS0003
+    description: Azure AD sign-in logs
+  office365-activity:
+    category: saas
+    attack_ds: DS0011
+    description: Microsoft 365 activity logs
+  network-flow:
+    category: network
+    attack_ds: DS0019
+    description: Network flow records
+  cloudtrail:
+    category: cloud
+    attack_ds: DS0015
+    description: AWS CloudTrail logs

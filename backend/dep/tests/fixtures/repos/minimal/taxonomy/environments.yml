@@ -1,0 +1,11 @@
+schema_version: "1.0.0"
+environments:
+  dev:
+    tier: dev
+    requires_approval: false
+  staging:
+    tier: staging
+    requires_approval: false
+  prod:
+    tier: prod
+    requires_approval: true

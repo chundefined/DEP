@@ -1,0 +1,6 @@
+schema_version: "1.0.0"
+# Branch -> environment map. Environments are defined in taxonomy/environments.yml.
+# The environment of a change is determined by the branch it lives on, not by content.
+branches:
+  develop: dev
+  main: prod

@@ -1,0 +1,5 @@
+schema_version: "1.0.0"
+# TODO: Complete repository-specific DEP configuration.
+config:
+  name: detection-repository
+  schema_version: "1.0.0"

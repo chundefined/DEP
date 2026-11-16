@@ -1,0 +1,16 @@
+schema_version: "1.0.0"
+name: Missing ID
+version: "0.1.0"
+status: draft
+description: This detection is missing the required id field entirely.
+severity: medium
+detection_type: signature
+intent:
+  summary: Detects something.
+  adversary_behavior:
+    - suspicious-behavior
+governance:
+  owner:
+    team: detection-engineering
+documentation:
+  overview: README.md

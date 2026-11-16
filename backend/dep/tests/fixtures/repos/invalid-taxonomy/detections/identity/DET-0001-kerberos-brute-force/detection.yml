@@ -1,0 +1,62 @@
+schema_version: "1.0.0"
+id: DET-0001
+name: Kerberos Brute Force
+slug: kerberos-brute-force
+version: "1.0.0"
+status: production_candidate
+description: Detects repeated Kerberos pre-authentication failures indicative of a brute-force attack.
+severity: high
+detection_type: signature
+intent:
+  summary: Detects Kerberos brute force attempts.
+  adversary_behavior:
+    - brute-force
+layers:
+  - id: identity
+    strength: primary
+mitre:
+  attack_version: "v15.1"
+  mappings:
+    - tactic: TA0006
+      technique: T1110
+      subtechnique: null
+      coverage_level: significant
+      detection_confidence: medium
+      primary: true
+      notes: "Kerberos brute-force detection"
+data_sources:
+  - id: windows-security-events
+    required: true
+    log_sources:
+      - platform: unknown-platform
+        table: SecurityEvent
+        event_ids:
+          - "4771"
+implementations:
+  - id: IMP-0001-SENTINEL
+    platform: unknown-platform
+    type: native
+    status: active
+    enabled: true
+    logic:
+      language: kql
+      file: implementations/sentinel/rule.kql
+    version: "1.0.0"
+tests:
+  - id: TST-0001-001
+    name: positive case
+    type: unit_test
+    given: SecurityEvent with EventID 4771
+    when: 5 failures in 10 minutes from the same source
+    then: detection fires
+    data: tests/data/positive.json
+    automation_status: automated
+    runner: rsigma
+documentation:
+  overview: README.md
+  investigation: docs/investigation.md
+governance:
+  owner:
+    team: detection-engineering
+sigma:
+  present: false

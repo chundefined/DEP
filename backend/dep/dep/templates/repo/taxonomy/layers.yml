@@ -1,0 +1,26 @@
+schema_version: "1.0.0"
+layers:
+  identity:
+    weight: 1.0
+    target_coverage_pct: 85
+  endpoint:
+    weight: 1.0
+    target_coverage_pct: 80
+  network:
+    weight: 1.0
+    target_coverage_pct: 70
+  cloud:
+    weight: 1.0
+    target_coverage_pct: 75
+  email:
+    weight: 1.0
+    target_coverage_pct: 75
+  application:
+    weight: 1.0
+    target_coverage_pct: 65
+  data:
+    weight: 1.0
+    target_coverage_pct: 60
+  ot:
+    weight: 1.0
+    target_coverage_pct: 50

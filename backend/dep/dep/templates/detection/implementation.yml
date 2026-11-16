@@ -1,0 +1,25 @@
+  - id: IMP-${num}-${suffix}
+    platform: ${platform}
+    type: native
+    status: draft
+    enabled: false
+    version: "1.0.0"
+    logic:
+      language: ${language}
+      file: implementations/${platform}/rule.${ext}
+    schedule:
+      frequency: PT1H
+      lookback: PT1H
+    entity_mappings:
+      - entity: Account
+        identifier: Name
+        column: TODO_Column
+    suppression:
+      enabled: false
+      duration: PT5H
+    threshold:
+      operator: gt
+      value: 0
+    notes: >
+      TODO: source of the logic, pending validation steps and blocking
+      actions before moving to production.

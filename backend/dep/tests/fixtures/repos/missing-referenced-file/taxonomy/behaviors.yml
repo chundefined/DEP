@@ -1,0 +1,16 @@
+schema_version: "1.0.0"
+behaviors:
+  authentication-coercion:
+    description: Forcing a target to authenticate to an attacker-controlled resource.
+  brute-force:
+    description: Repeated attempts to guess credentials.
+  credential-dumping:
+    description: Extracting credentials from memory or storage.
+  lateral-movement:
+    description: Moving through the network after initial access.
+  persistence:
+    description: Maintaining access to a compromised environment.
+  privilege-escalation:
+    description: Gaining higher-level permissions.
+  suspicious-behavior:
+    description: Generic placeholder for suspicious activity.

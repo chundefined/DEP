@@ -1,0 +1,10 @@
+schema_version: "1.0.0"
+owners:
+  detection-engineering:
+    contact: detection-eng@example.com
+  soc-leads:
+    contact: soc-leads@example.com
+  identity-team:
+    contact: identity-team@example.com
+  cloud-team:
+    contact: cloud-team@example.com

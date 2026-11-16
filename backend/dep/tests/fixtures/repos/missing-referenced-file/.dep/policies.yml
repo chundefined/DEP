@@ -1,0 +1,41 @@
+schema_version: "1.0.0"
+validation_policy:
+  gates:
+    prod:
+      required_validations:
+        - data_availability
+        - schema_validation
+        - syntax_validation
+        - historical_backtest
+      max_age_days: 30
+      block_on_findings:
+        severities: [critical, high]
+        types: [noise, logic_error, data_gap, drift]
+      require_approval: true
+      approver_must_differ_from_author: true
+    dev:
+      required_validations:
+        - syntax_validation
+      require_approval: false
+
+  revalidation:
+    default_days: 180
+    by_severity:
+      critical: 90
+      high: 120
+      medium: 180
+      low: 365
+
+  thresholds:
+    max_fp_ratio: 0.30
+    min_field_population: 0.50
+    max_query_runtime_ms: 60000
+    data_source_staleness_hours: 48
+    enrichment_staleness_days: 30
+    zero_alerts_review_days: 90
+
+  backtest:
+    max_lookback_days: 30
+    max_concurrent_per_env: 2
+    max_rows_stored: 1000
+    require_approval_above_gb_scanned: 100

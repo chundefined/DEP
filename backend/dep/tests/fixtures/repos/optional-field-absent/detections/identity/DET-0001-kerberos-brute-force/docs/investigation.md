@@ -1,0 +1,3 @@
+# Investigation
+
+Investigation steps placeholder.

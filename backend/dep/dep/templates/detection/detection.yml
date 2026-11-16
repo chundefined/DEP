@@ -1,0 +1,100 @@
+schema_version: "1.0.0"
+id: ${id}
+name: ${name}
+version: "1.0.0"
+status: draft
+description: >
+  TODO: describe what this detection fires on, the data it uses, its
+  thresholds and known exclusions.
+severity: medium
+confidence: low
+detection_type: signature
+
+intent:
+  summary: >
+    TODO: one or two sentences with the adversary behavior this detection
+    identifies.
+  hypothesis: >
+    TODO: if the adversary does X, the data source logs Y, and the rule
+    returns Z. State also what must NOT fire.
+  adversary_behavior:
+    - suspicious-behavior
+  attack_surface:
+    - identity
+  scope:
+    included:
+      - "TODO: events and conditions inside the detection perimeter"
+    excluded:
+      - "TODO: events and conditions outside the detection perimeter"
+
+mitre:
+  attack_version: "16.1"
+  mappings:
+    - tactic: TA0000
+      technique: T0000
+      subtechnique: null
+      coverage_level: minimal
+      detection_confidence: low
+      primary: true
+      notes: >
+        TODO: replace TA0000 and T0000 with the real MITRE ATT&CK tactic and
+        technique, and describe the coverage.
+
+layers:
+  - id: identity
+    strength: primary
+
+data_sources:
+  - id: windows-security-events
+    required: true
+    log_sources:
+${log_sources}
+
+implementations:
+${implementations}
+
+documentation:
+  overview: documentation/overview.md
+
+# Optional blocks. Uncomment and complete only when they apply.
+#
+# enrichment_assets:
+#   - id: example-watchlist
+#     type: watchlist
+#     platform: sentinel
+#     required: true
+#     purpose: >
+#       TODO: why the query needs this list.
+#
+# threat:
+#   - type: actor
+#     identifier: TODO
+#     name: TODO
+#     relevance: related
+#
+# tests:
+#   - id: TEST-001
+#     name: TODO
+#     type: unit_test
+#     given: TODO
+#     when: TODO
+#     then: TODO
+#     automation_status: manual
+#
+# exceptions: []
+#
+# relationships:
+#   - type: complements
+#     detection: DET-0000
+#
+# sigma:
+#   present: false
+
+source:
+  origin: custom
+  reference: null
+  original_author: null
+
+governance:
+  owner:
+    team: detection-engineering

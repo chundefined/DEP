@@ -1,0 +1,18 @@
+schema_version: "1.0.0"
+platforms:
+  sentinel:
+    type: siem
+    language: kql
+    sigmaforge_backend: microsoft365defender
+  qradar:
+    type: siem
+    language: aql
+  splunk:
+    type: siem
+    language: spl
+  elastic:
+    type: siem
+    language: lucene
+  sentinel_one:
+    type: edr
+    language: fql

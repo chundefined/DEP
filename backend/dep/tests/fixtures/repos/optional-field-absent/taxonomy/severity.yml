@@ -1,0 +1,12 @@
+schema_version: "1.0.0"
+severity:
+  info:
+    triage_sla_minutes: 1440
+  low:
+    triage_sla_minutes: 480
+  medium:
+    triage_sla_minutes: 240
+  high:
+    triage_sla_minutes: 60
+  critical:
+    triage_sla_minutes: 15

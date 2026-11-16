@@ -1,0 +1,4 @@
+SecurityEvent
+| where EventID == 4771
+| summarize FailureCount = count() by TargetUserName, IpAddress, bin(TimeGenerated, 10m)
+| where FailureCount >= 5

@@ -1,0 +1,17 @@
+schema_version: "1.0.0"
+id: DET-0002
+name: Bad Severity
+version: "0.1.0"
+status: draft
+description: This detection uses a severity value of the wrong type.
+severity: 123
+detection_type: signature
+intent:
+  summary: Detects something.
+  adversary_behavior:
+    - suspicious-behavior
+governance:
+  owner:
+    team: detection-engineering
+documentation:
+  overview: README.md

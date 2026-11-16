@@ -1,0 +1,126 @@
+schema_version: "1.0.0"
+id: DET-0003
+uuid: 7c1f4e9a-2b3d-4c5e-9a8b-1d2e3f4a5b6c
+name: Coerced Authentication
+slug: coerced-authentication
+version: "1.0.0"
+status: production_candidate
+description: >
+  Detects attempts to coerce authentication over a local system involving
+  the lsarpc protocol and Windows Event ID 5145.
+severity: high
+confidence: medium
+risk_score: 75
+detection_type: signature
+alert_disposition: alert
+false_positive_rate_expected: medium
+tlp: amber
+visibility: internal
+source:
+  origin: custom
+  reference: null
+  original_author: null
+intent:
+  summary: Detect authentication coercion attempts through lsarpc.
+  hypothesis: >
+    An adversary with network access will invoke MS-RPC methods over the
+    lsarpc named pipe to force a machine account to authenticate.
+  adversary_behavior:
+    - authentication-coercion
+    - smb
+    - lsarpc
+    - ntlm-relay
+  preconditions:
+    - Object Access auditing enabled
+  scope:
+    included:
+      - Domain Controllers
+    excluded:
+      - EFSRPC coercion
+  kill_chain_phase:
+    - credential-access
+  attack_surface:
+    - identity
+    - endpoint
+    - network
+mitre:
+  attack_version: "v15.1"
+  mappings:
+    - tactic: TA0006
+      technique: T1187
+      subtechnique: null
+      coverage_level: significant
+      detection_confidence: medium
+      primary: true
+      notes: Covers lsarpc pipe only
+layers:
+  - id: identity
+    strength: primary
+  - id: endpoint
+    strength: supporting
+data_sources:
+  - id: windows-security-events
+    required: true
+    log_sources:
+      - platform: sentinel
+        table: SecurityEvent
+        event_ids:
+          - "5145"
+        required_fields:
+          - EventID
+          - RelativeTargetName
+implementations:
+  - id: IMP-0003-SENTINEL
+    platform: sentinel
+    type: native
+    status: active
+    enabled: true
+    logic:
+      language: kql
+      file: implementations/sentinel/rule.kql
+    version: "1.0.0"
+sigma:
+  present: false
+validation:
+  status: partial
+  policy:
+    require_before_prod:
+      - schema_validation
+    revalidate_every_days: 180
+tests:
+  - id: TST-COERCE-001
+    name: 5145 with lsarpc target fires
+    type: unit_test
+    given: SecurityEvent with EventID 5145
+    when: RelativeTargetName == 'lsarpc'
+    then: Detection returns 1 row
+    automation_status: automated
+    runner: rsigma
+documentation:
+  overview: README.md
+  investigation: docs/investigation.md
+  false_positives: docs/false-positives.md
+  response: docs/response.md
+  tuning: docs/tuning.md
+  changelog: CHANGELOG.md
+runbook:
+  estimated_triage_minutes: 15
+governance:
+  owner:
+    team: detection-engineering
+    contact: detection-eng@example.com
+  roles:
+    author: j.perez
+    maintainer: j.perez
+    approver: soc-lead
+  review:
+    cadence_days: 180
+    last_reviewed: 2026-08-20
+    next_due: 2027-02-16
+  lifecycle:
+    created: 2026-08-15
+    promoted_to_prod: null
+    deprecated: null
+    retired: null
+relationships: []
+exceptions: []

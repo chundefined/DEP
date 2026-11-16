@@ -1,0 +1,18 @@
+schema_version: "1.0.0"
+detection_score:
+  weights:
+    coverage: 0.1429
+    quality: 0.1429
+    health: 0.1429
+    effectiveness: 0.1429
+    governance: 0.1429
+    layer_coverage: 0.1428
+    production_effectiveness: 0.1428
+  rounding: nearest
+  caps: []
+  bands:
+    excellent: [90, 100]
+    good: [75, 89]
+    fair: [60, 74]
+    poor: [40, 59]
+    critical: [0, 39]

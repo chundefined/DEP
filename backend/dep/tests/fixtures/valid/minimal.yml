@@ -1,0 +1,17 @@
+schema_version: "1.0.0"
+id: DET-0001
+name: Minimal Detection
+version: "0.1.0"
+status: draft
+description: This is a minimal valid detection description that is long enough.
+severity: medium
+detection_type: signature
+intent:
+  summary: Detects a minimal suspicious behavior.
+  adversary_behavior:
+    - suspicious-behavior
+governance:
+  owner:
+    team: detection-engineering
+documentation:
+  overview: README.md

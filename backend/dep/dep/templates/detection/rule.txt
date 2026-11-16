@@ -1,0 +1,2 @@
+${comment} TODO: write the ${language} query for ${id} (${platform}).
+${comment} Keep the logic only in this file; detection.yml references it by path.

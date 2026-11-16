@@ -1,0 +1,24 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "dep"
+version = "0.1.0"
+description = "Detection Engineering Platform - detection-as-code CLI: validate, version and commit detection repositories"
+requires-python = ">=3.10"
+dependencies = [
+    "pyyaml",
+    "jsonschema",
+]
+
+[project.optional-dependencies]
+test = [
+    "pytest",
+]
+
+[project.scripts]
+dep = "dep.cli.main:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["dep"]

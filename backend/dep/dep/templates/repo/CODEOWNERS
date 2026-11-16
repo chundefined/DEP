@@ -1,0 +1,10 @@
+# TODO: Complete CODEOWNERS
+
+# Example:
+# detections/                     @org/detection-engineering
+# taxonomy/                       @org/soc-leads
+# .dep/policies.yml               @org/soc-leads @org/platform-admins
+# .dep/environments.yml           @org/soc-leads @org/platform-admins
+#
+# The environment is determined by the branch: protect `main` (PROD) on the
+# Git host with mandatory approval instead of per-path rules.
